@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #141414;
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  background-color: #282828;
+  height: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  width: 400px;
+}
+main {
+  width: 100%;
+  background-color: #282828;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: auto;
+}
+.main-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 17px;
+  background-color: #3c3c3c;
+  outline: none;
+  color: white;
+
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+h2 {
+  font-size: 35px;
+  color: white;
+  margin-bottom: 30px;
+}
+label {
+  color: rgb(146, 145, 145);
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+.submit {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #3c3c50;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 5px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    overflow: auto;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 10PX;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #3c3c3c;
+    color: #fff;
+    position: relative;
+}
+
+.buttons{
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    top: 10px;
+
+    /* flex-direction: column; */
+    right: 10px;
+}
+
+.edit{
+    padding: 5px;
+    background-color: rgb(255, 179, 0);
+    border-radius: 4px;
+    border: none;
+    color: white;
+
+}
+
+.delete{
+    padding: 5px;
+    background-color: red;
+    border: none;
+    border-radius: 4px;
+    color: white;
+  
+    
+}
+
+
+
+
+.avatar{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
