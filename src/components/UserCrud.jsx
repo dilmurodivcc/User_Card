@@ -9,13 +9,27 @@ export default function UserCardList() {
     email: "",
     age: "",
     job: "",
+    gender: "Male",
     address: "",
     phone: "",
+    activities: [],
   });
   const [editingId, setEditingId] = useState(null);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+
+    if (type === "checkbox") {
+      setForm((prevForm) => {
+        const updatedActivities = checked
+          ? [...prevForm.activities, value]
+          : prevForm.activities.filter((activity) => activity !== value);
+
+        return { ...prevForm, activities: updatedActivities };
+      });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const handleSubmit = () => {
@@ -29,7 +43,16 @@ export default function UserCardList() {
     } else {
       setUsers([...users, { ...form, id: uuidv4() }]);
     }
-    setForm({ name: "", email: "", age: "", job: "", address: "", phone: "" });
+    setForm({
+      name: "",
+      email: "",
+      age: "",
+      job: "",
+      gender: "Male",
+      address: "",
+      phone: "",
+      activities: [],
+    });
   };
 
   const handleEdit = (id) => {
@@ -46,7 +69,8 @@ export default function UserCardList() {
     <>
       <div className="inputs">
         <h2 className="text-xl font-bold mb-4">Add User</h2>
-        <label htmlFor="name"> For Name:</label>
+
+        <label htmlFor="name">For Name:</label>
         <input
           type="text"
           name="name"
@@ -56,8 +80,8 @@ export default function UserCardList() {
           onChange={handleChange}
           className="main-input"
         />
-        <label htmlFor="email">For Email:</label>
 
+        <label htmlFor="email">For Email:</label>
         <input
           type="email"
           name="email"
@@ -67,8 +91,8 @@ export default function UserCardList() {
           onChange={handleChange}
           className="main-input"
         />
-        <label htmlFor="number">For number:</label>
 
+        <label htmlFor="number">For Age:</label>
         <input
           type="number"
           name="age"
@@ -78,8 +102,8 @@ export default function UserCardList() {
           onChange={handleChange}
           className="main-input"
         />
-        <label htmlFor="job">For Job:</label>
 
+        <label htmlFor="job">For Job:</label>
         <input
           type="text"
           name="job"
@@ -89,8 +113,35 @@ export default function UserCardList() {
           onChange={handleChange}
           className="main-input"
         />
-        <label htmlFor="address">For Address:</label>
 
+        {/* Gender Radio */}
+        <label>For Gender:</label>
+        <div className="gender">
+          <span>
+            {" "}
+            <input
+              type="radio"
+              name="gender"
+              value="Male"
+              checked={form.gender === "Male"}
+              onChange={handleChange}
+            />{" "}
+            Male
+          </span>{" "}
+          <span>
+            {" "}
+            <input
+              type="radio"
+              name="gender"
+              value="Female"
+              checked={form.gender === "Female"}
+              onChange={handleChange}
+            />{" "}
+            Female
+          </span>
+        </div>
+
+        <label htmlFor="address">For Address:</label>
         <input
           type="text"
           name="address"
@@ -100,8 +151,8 @@ export default function UserCardList() {
           onChange={handleChange}
           className="main-input"
         />
-        <label htmlFor="phone"> For Phone:</label>
 
+        <label htmlFor="phone">For Phone:</label>
         <input
           type="text"
           name="phone"
@@ -111,13 +162,35 @@ export default function UserCardList() {
           onChange={handleChange}
           className="main-input"
         />
-        <button
-          onClick={handleSubmit}
-          className="submit"
-        >
+
+        <label>Are you studying or working?</label>
+        <div className="activities">
+       <span>
+          <input
+            className="study"
+            type="checkbox"
+            name="activities"
+            value="Studying"
+            checked={form.activities.includes("Studying")}
+            onChange={handleChange}
+          />{" "}
+          Studying
+       </span>
+         <span> <input
+            type="checkbox"
+            name="activities"
+            value="Working"
+            checked={form.activities.includes("Working")}
+            onChange={handleChange}
+          />{" "}
+          Working</span>
+        </div>
+
+        <button onClick={handleSubmit} className="submit">
           {editingId ? "Update User" : "Add User"}
         </button>
       </div>
+
       <main>
         <h2 className="text-xl font-bold mb-4">User List</h2>
         <div className="grid">
@@ -136,26 +209,32 @@ export default function UserCardList() {
                 <strong>Job:</strong> {user.job}
               </p>
               <p>
+                <strong>Gender:</strong> {user.gender}
+              </p>
+              <p>
                 <strong>Address:</strong> {user.address}
               </p>
               <p>
                 <strong>Phone:</strong> {user.phone}
               </p>
+              <p>
+                <strong>Activities:</strong>{" "}
+                {user.activities.length > 0
+                  ? user.activities.join(", ")
+                  : "None"}
+              </p>
 
-            <div className="avatar"></div>
+              <div className="avatar"></div>
               <div className="buttons">
-                <button
-                  onClick={() => handleEdit(user.id)}
-                  className="edit"
-                >
-                  <i class="fa-solid fa-pen-to-square"></i>
+                <button onClick={() => handleEdit(user.id)} className="edit">
+                  <i className="fa-solid fa-pen-to-square"></i>
                 </button>
 
                 <button
                   onClick={() => handleDelete(user.id)}
                   className="delete"
                 >
-                  <i class="fa-solid fa-trash"></i>
+                  <i className="fa-solid fa-trash"></i>
                 </button>
               </div>
             </div>

@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  color: white;
 }
 
 #root {
@@ -24,6 +25,7 @@
   padding: 20px;
   border-radius: 20px;
   width: 400px;
+  overflow-y: scroll;
 }
 main {
   width: 100%;
@@ -42,15 +44,14 @@ main {
   background-color: #3c3c3c;
   outline: none;
   color: white;
-
 }
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 h2 {
   font-size: 35px;
@@ -74,63 +75,74 @@ label {
   font-size: 16px;
   margin-top: 5px;
 }
-.grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    overflow: auto;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  overflow: auto;
 }
-.card{
-    display: flex;
-    flex-direction: column;
-    gap: 10PX;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #3c3c3c;
-    color: #fff;
-    position: relative;
-}
-
-.buttons{
-    display: flex;
-    gap: 5px;
-    position: absolute;
-    top: 10px;
-
-    /* flex-direction: column; */
-    right: 10px;
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #3c3c3c;
+  color: #fff;
+  position: relative;
 }
 
-.edit{
-    padding: 5px;
-    background-color: rgb(255, 179, 0);
-    border-radius: 4px;
-    border: none;
-    color: white;
+.buttons {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  top: 10px;
 
+  /* flex-direction: column; */
+  right: 10px;
 }
 
-.delete{
-    padding: 5px;
-    background-color: red;
-    border: none;
-    border-radius: 4px;
-    color: white;
-  
-    
+.edit {
+  padding: 5px;
+  background-color: rgb(255, 179, 0);
+  border-radius: 4px;
+  border: none;
+  color: white;
 }
 
-
-
-
-.avatar{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: #fff;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
+.delete {
+  padding: 5px;
+  background-color: red;
+  border: none;
+  border-radius: 4px;
+  color: white;
 }
 
+.avatar {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background-image: url(../assets/user-icon-1024x1024-dtzturco.png);
+}
+
+.gender,
+.activities {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  background-color: #3c3c3c;
+ 
+}
+input[type="checkbox"], input[type="radio"] {
+  cursor: pointer;
+}
+
+button{
+  cursor: pointer;
+}
