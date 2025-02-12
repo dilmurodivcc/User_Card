@@ -224,7 +224,9 @@ export default function UserCardList() {
                   : "None"}
               </p>
 
-              <div className="avatar"></div>
+              <div className="avatar">
+<img src="./src/assets/user-icon-1024x1024-dtzturco.png" alt="" />
+              </div>
               <div className="buttons">
                 <button onClick={() => handleEdit(user.id)} className="edit">
                   <i className="fa-solid fa-pen-to-square"></i>
